@@ -14,4 +14,14 @@ class AppColors {
   static const Color authFieldsForegroundColor = Color(0x80E0E0E0);
 
   static const Color authPagebackgroundColor = Color(0xFF121212);
+
+  //Main Screen color
+
+  static const Color mainImgPagebackgroundColor = Color(0xFF121212);
+
+  static const Color mainScreenTextStyle = Color(0xFF000000);
+
+  static const Color mainScreenButtonBackgroundColor = Color(0xFFA7FF37);
+
+  static const Color mainScreenButtonForegroundColor = Color(0xFF000000);
 }

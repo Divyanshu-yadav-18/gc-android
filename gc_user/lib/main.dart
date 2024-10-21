@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gc_user/ui/screens/auth_login_screen.dart';
+import 'package:gc_user/ui/screens/main_img_first_screen.dart';
+import 'package:gc_user/ui/screens/main_img_second_screen.dart';
+import 'package:gc_user/ui/screens/main_img_third_screen.dart';
 
 void main() {
   runApp(const MyApp());
