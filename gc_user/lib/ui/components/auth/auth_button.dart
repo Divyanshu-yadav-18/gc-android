@@ -3,10 +3,10 @@ import 'package:gc_user/core/style/colors.dart';
 import 'package:gc_user/core/style/sizes.dart';
 import 'package:gc_user/core/style/typography.dart';
 
-class CustomAuthButton extends StatelessWidget {
+class AuthButton extends StatelessWidget {
   final bool isDisabled;
   final String buttonText;
-  const CustomAuthButton({
+  const AuthButton({
     super.key,
     required this.buttonText,
     required this.isDisabled,
@@ -22,10 +22,10 @@ class CustomAuthButton extends StatelessWidget {
                 .runningDeviceDimensionAdjustedWidth(303),
             AppComponestsSizes(context)
                 .runningDeviceDimensionAdjustedHeight(43.6)),
-        foregroundColor: AppColors.authButtonForegroundColor,
+        foregroundColor: AppColors.buttonTextPrimaryColor,
         backgroundColor: isDisabled
-            ? AppColors.authButtonDisabledBackgroundColor
-            : AppColors.authButtonEnabledBackgroundColor,
+            ? AppColors.buttonSecondaryColor
+            : AppColors.buttonPrimaryColor,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(15),
@@ -34,7 +34,7 @@ class CustomAuthButton extends StatelessWidget {
       ),
       child: Text(
         buttonText,
-        style: AppTypography.authButtonTextStyle,
+        style: AppTypography.buttonPrimaryTextStyle,
       ),
     );
   }

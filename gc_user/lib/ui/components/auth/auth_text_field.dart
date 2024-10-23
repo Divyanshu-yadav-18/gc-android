@@ -3,12 +3,12 @@ import 'package:gc_user/core/style/colors.dart';
 import 'package:gc_user/core/style/sizes.dart';
 import 'package:gc_user/core/style/typography.dart';
 
-class CustomAuthTextField extends StatelessWidget {
+class AuthTextField extends StatelessWidget {
   final String hintText;
   final IconData icon;
   final TextEditingController controller;
   final bool obsecureText;
-  const CustomAuthTextField({
+  const AuthTextField({
     super.key,
     required this.hintText,
     required this.icon,
@@ -24,12 +24,12 @@ class CustomAuthTextField extends StatelessWidget {
       decoration: InputDecoration(
         prefixIcon: Icon(
           icon,
-          color: AppColors.authFieldsForegroundColor,
+          color: AppColors.inputFieldPrimaryColor,
         ),
         hintText: hintText,
         filled: true,
-        fillColor: AppColors.authFieldsBackgroundColor,
-        hintStyle: AppTypography.authFieldTextStyle,
+        fillColor: AppColors.inputFieldSecondaryColor,
+        hintStyle: AppTypography.inputFieldPrimaryTextStyle,
         constraints: BoxConstraints(
           maxWidth: AppComponestsSizes(context)
               .runningDeviceDimensionAdjustedWidth(305),

@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gc_user/ui/screens/auth_login_screen.dart';
-import 'package:gc_user/ui/screens/main_img_first_screen.dart';
-import 'package:gc_user/ui/screens/main_img_second_screen.dart';
-import 'package:gc_user/ui/screens/main_img_third_screen.dart';
+import 'package:gc_user/ui/screens/auth/otp_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,6 +23,6 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(body: AuthLoginScreen());
+    return const Scaffold(body: EnterOtpScreen());
   }
 }

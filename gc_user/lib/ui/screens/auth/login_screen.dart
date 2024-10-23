@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gc_user/core/style/colors.dart';
 import 'package:gc_user/core/style/sizes.dart';
-import 'package:gc_user/ui/components/auth_button.dart';
-import 'package:gc_user/ui/components/auth_text_field.dart';
+import 'package:gc_user/ui/components/auth/auth_button.dart';
+import 'package:gc_user/ui/components/auth/auth_text_field.dart';
+import 'package:gc_user/ui/components/auth/display_text.dart';
 
 class AuthLoginScreen extends StatefulWidget {
   const AuthLoginScreen({super.key});
@@ -12,12 +13,21 @@ class AuthLoginScreen extends StatefulWidget {
 }
 
 class _AuthLoginScreenState extends State<AuthLoginScreen> {
-  late final TextEditingController _emailTextEditingCOntroller;
+  late final TextEditingController _emailTextEditingController;
+  late final TextEditingController _passwordTextEditingController;
 
   @override
   void initState() {
     super.initState();
-    _emailTextEditingCOntroller = TextEditingController();
+    _emailTextEditingController = TextEditingController();
+    _passwordTextEditingController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _emailTextEditingController.dispose();
+    _passwordTextEditingController.dispose();
   }
 
   @override
@@ -28,67 +38,65 @@ class _AuthLoginScreenState extends State<AuthLoginScreen> {
       height:
           AppComponestsSizes(context).runningDeviceDimensionAdjustedHeight(716),
       clipBehavior: Clip.antiAlias,
-      decoration: const BoxDecoration(color: AppColors.authPagebackgroundColor),
+      decoration: const BoxDecoration(color: AppColors.primaryBackgroundColor),
       child: Stack(
         children: [
           Positioned(
             left: AppComponestsSizes(context)
                 .runningDeviceDimensionAdjustedWidth(27.0),
             top: AppComponestsSizes(context)
-                .runningDeviceDimensionAdjustedHeight(114.2),
+                .runningDeviceDimensionAdjustedHeight(50.0),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(
-                  child: Text(
-                    'LOGIN',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 35,
-                      fontFamily: 'League Spartan',
-                      fontWeight: FontWeight.w400,
-                    ),
+                  child: Icon(
+                    Icons.arrow_back,
+                    color: Colors.white,
+                    size: 25,
                   ),
+                ),
+                SizedBox(
+                    height: AppComponestsSizes(context)
+                        .runningDeviceDimensionAdjustedHeight(50.0)),
+                const SizedBox(
+                  child: DisplayText(text: 'LOG IN', fontSize: 38),
                 ),
                 SizedBox(
                     height: AppComponestsSizes(context)
                         .runningDeviceDimensionAdjustedHeight(25.2)),
                 const SizedBox(
-                  child: Text(
-                    'Enter your email address \nto sign in',
-                    style: TextStyle(
-                      color: Color(0xFFE0E0E0),
-                      fontSize: 20,
-                      fontFamily: 'League Spartan',
-                      fontWeight: FontWeight.w400,
-                    ),
+                  child: DisplayText(
+                    text: 'Enter your email address \nto sign in',
+                    fontSize: 23,
+                    textColor: AppColors.inputFieldPrimaryColor,
                   ),
                 ),
                 SizedBox(
                   height: AppComponestsSizes(context)
                       .runningDeviceDimensionAdjustedHeight(53.0),
                 ),
-                CustomAuthTextField(
+                AuthTextField(
                     hintText: 'Email',
                     icon: Icons.alternate_email_rounded,
-                    controller: _emailTextEditingCOntroller,
+                    controller: _emailTextEditingController,
                     obsecureText: false),
                 SizedBox(
                   height: AppComponestsSizes(context)
                       .runningDeviceDimensionAdjustedHeight(11.76),
                 ),
-                CustomAuthTextField(
+                AuthTextField(
                     hintText: 'Password',
                     icon: Icons.key,
-                    controller: _emailTextEditingCOntroller,
+                    controller: _passwordTextEditingController,
                     obsecureText: false),
                 SizedBox(
                   height: AppComponestsSizes(context)
                       .runningDeviceDimensionAdjustedHeight(11.76),
                 ),
-                const CustomAuthButton(buttonText: 'LOG IN', isDisabled: true),
+                const AuthButton(buttonText: 'LOG IN', isDisabled: true),
               ],
             ),
           ),
@@ -115,25 +123,14 @@ class _AuthLoginScreenState extends State<AuthLoginScreen> {
             child: const Column(
               children: [
                 SizedBox(
-                  child: Text(
-                    'Don\'t have an account ?',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 25,
-                      fontFamily: 'League Spartan',
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
+                  child: DisplayText(
+                      text: 'Don\'t have an account?', fontSize: 28),
                 ),
                 SizedBox(
-                  child: Text(
-                    'Sign Up',
-                    style: TextStyle(
-                      color: Color(0xFFA7FF37),
-                      fontSize: 20,
-                      fontFamily: 'League Spartan',
-                      fontWeight: FontWeight.w400,
-                    ),
+                  child: DisplayText(
+                    text: 'Sign up',
+                    fontSize: 23,
+                    textColor: AppColors.buttonPrimaryColor,
                   ),
                 ),
               ],
