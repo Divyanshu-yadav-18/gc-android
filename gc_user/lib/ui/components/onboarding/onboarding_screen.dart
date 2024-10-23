@@ -1,32 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:gc_user/core/style/colors.dart';
 import 'package:gc_user/core/style/sizes.dart';
-import 'package:gc_user/ui/components/main_screen_button.dart';
+import 'package:gc_user/ui/components/onboarding/onboarding_button.dart';
 
-class MainImgSecondScreen extends StatelessWidget {
-  const MainImgSecondScreen({super.key});
+class OnboardingScreen extends StatelessWidget {
+  final String imagePath;
+  final String heading;
+  final String description;
+  const OnboardingScreen(
+      {super.key,
+      required this.imagePath,
+      required this.heading,
+      required this.description});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.mainImgPagebackgroundColor,
+      backgroundColor: AppColors.primaryBackgroundColor,
       body: Stack(
         children: [
           Column(
             children: [
-              Container(
-                width: double.infinity,
+              SizedBox(
+                width: AppComponestsSizes(context)
+                    .runningDeviceDimensionAdjustedHeight(360),
+                height: AppComponestsSizes(context)
+                    .runningDeviceDimensionAdjustedHeight(467),
                 child: Align(
                   alignment: Alignment.topCenter,
-                  child: Image.asset('assets/trophy.png'),
+                  child: Image(
+                    image: AssetImage(imagePath),
+                  ),
                 ),
               ),
               SizedBox(
                   height: AppComponestsSizes(context)
                       .runningDeviceDimensionAdjustedHeight(0.84 * 22)),
-              const Text(
-                'INTRODUCING FOR THE FIRST TIME',
-                style: TextStyle(
+              Text(
+                heading,
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 22,
                   fontFamily: 'League Spartan',
@@ -37,9 +49,9 @@ class MainImgSecondScreen extends StatelessWidget {
               SizedBox(
                   height: AppComponestsSizes(context)
                       .runningDeviceDimensionAdjustedHeight(0.84 * 12)),
-              const Text(
-                'Watch live scores of different games only on the grand championship app',
-                style: TextStyle(
+              Text(
+                description,
+                style: const TextStyle(
                   color: Colors.white70,
                   fontSize: 16,
                   fontFamily: 'League Spartan',
@@ -49,7 +61,7 @@ class MainImgSecondScreen extends StatelessWidget {
               SizedBox(
                   height: AppComponestsSizes(context)
                       .runningDeviceDimensionAdjustedHeight(0.84 * 69)),
-              const MainScreenButton(buttonText: 'NEXT')
+              const OnboardingButton(buttonText: 'NEXT')
             ],
           ),
           Padding(

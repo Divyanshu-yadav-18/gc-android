@@ -3,9 +3,9 @@ import 'package:gc_user/core/style/colors.dart';
 import 'package:gc_user/core/style/sizes.dart';
 import 'package:gc_user/core/style/typography.dart';
 
-class MainScreenButton extends StatelessWidget {
+class OnboardingButton extends StatelessWidget {
   final String buttonText;
-  const MainScreenButton({
+  const OnboardingButton({
     super.key,
     required this.buttonText,
   });
@@ -20,8 +20,8 @@ class MainScreenButton extends StatelessWidget {
                 .runningDeviceDimensionAdjustedWidth(303),
             AppComponestsSizes(context)
                 .runningDeviceDimensionAdjustedHeight(43.6)),
-        foregroundColor: AppColors.authButtonForegroundColor,
-        backgroundColor: AppColors.mainScreenButtonBackgroundColor,
+        foregroundColor: AppColors.buttonTextPrimaryColor,
+        backgroundColor: AppColors.buttonPrimaryColor,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(15),
@@ -30,7 +30,7 @@ class MainScreenButton extends StatelessWidget {
       ),
       child: Text(
         buttonText,
-        style: AppTypography.authButtonTextStyle,
+        style: AppTypography.buttonPrimaryTextStyle,
       ),
     );
   }
