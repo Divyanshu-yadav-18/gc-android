@@ -3,18 +3,40 @@ import 'package:gc_user/core/style/colors.dart';
 import 'package:gc_user/core/style/sizes.dart';
 import 'package:gc_user/ui/components/onboarding/onboarding_button.dart';
 
+final List<Map<String, String>> screenList = [
+  {
+    'image': 'assets/flag.png',
+    'heading': 'INTRODUCING FOR THE FIRST TIME',
+    'description':
+        'The all new grand championship app\nwhich will update your score\nlike never before'
+  },
+  {
+    'image': 'assets/trophy.png',
+    'heading': 'INTRODUCING FOR THE FIRST TIME',
+    'description':
+        'Watch live scores of different games only on the grand championship app'
+  },
+  {
+    'image': 'assets/ground.png',
+    'heading': 'INTRODUCING FOR THE FIRST TIME',
+    'description':
+        'Catch the live scores fro the comfort of your room and find who’s the start player'
+  }
+];
+
 class OnboardingScreen extends StatelessWidget {
-  final String imagePath;
-  final String heading;
-  final String description;
-  const OnboardingScreen(
-      {super.key,
-      required this.imagePath,
-      required this.heading,
-      required this.description});
+  final int index; // Track the current page index
+  final List<Map<String, String>> screenList;
+  const OnboardingScreen({
+    super.key,
+    required this.index,
+    required this.screenList,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final screen = screenList[index];
+
     return Scaffold(
       backgroundColor: AppColors.primaryBackgroundColor,
       body: Stack(
@@ -29,7 +51,7 @@ class OnboardingScreen extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.topCenter,
                   child: Image(
-                    image: AssetImage(imagePath),
+                    image: AssetImage(screen['image']!),
                   ),
                 ),
               ),
@@ -37,7 +59,7 @@ class OnboardingScreen extends StatelessWidget {
                   height: AppComponestsSizes(context)
                       .runningDeviceDimensionAdjustedHeight(0.84 * 22)),
               Text(
-                heading,
+                screen['heading']!,
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 22,
@@ -50,7 +72,7 @@ class OnboardingScreen extends StatelessWidget {
                   height: AppComponestsSizes(context)
                       .runningDeviceDimensionAdjustedHeight(0.84 * 12)),
               Text(
-                description,
+                screen['description']!,
                 style: const TextStyle(
                   color: Colors.white70,
                   fontSize: 16,
@@ -87,19 +109,46 @@ class OnboardingScreen extends StatelessWidget {
                 const SizedBox(
                   height: 200,
                 ),
-                const Align(
+                Align(
                   alignment: Alignment.centerLeft,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Icon(
-                        Icons.arrow_back_outlined,
-                        color: Colors.white,
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => OnboardingScreen(
+                                index: index - 1,
+                                screenList: screenList,
+                              ),
+                            ),
+                          );
+                        },
+                        child: const Icon(
+                          Icons.arrow_back_outlined,
+                          color: Colors.white,
+                        ),
                       ),
-                      Icon(
-                        Icons.arrow_forward,
-                        color: Colors.white,
-                      ),
+                      if (index < screenList.length - 1)
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => OnboardingScreen(
+                                  index: index + 1,
+                                  screenList: screenList,
+                                ),
+                              ),
+                            );
+                          },
+                          child: const Icon(
+                            Icons.arrow_forward,
+                            color: Colors.white,
+                          ),
+                        ),
                     ],
                   ),
                 )

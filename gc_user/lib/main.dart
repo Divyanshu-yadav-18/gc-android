@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:gc_user/ui/components/onboarding/onboarding_button.dart';
+import 'package:gc_user/ui/screens/onboarding/onboarding_screen.dart';
 import 'package:gc_user/ui/screens/auth/email_scren.dart';
+import 'package:gc_user/ui/screens/auth/login_screen.dart';
+import 'package:gc_user/ui/screens/auth/otp_screen.dart';
 
 void main() {
   runApp(const MyApp());
